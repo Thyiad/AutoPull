@@ -16,6 +16,8 @@ namespace AutoPull
             string workPath = Environment.CurrentDirectory;
             var repositories = Directory.GetDirectories(workPath);
 
+            repositories = repositories.ToList().FindAll(repo=>Directory.Exists(repo+"\\.git")).ToArray();
+
             if (repositories.Length == 0)
             {
                 Console.WriteLine("没有查找到 git 仓库，按下任意键退出......");
